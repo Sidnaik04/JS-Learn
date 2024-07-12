@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure</title>
+</head>
+<body style="background-color: #313131;">
+    
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+
+</body>
+
+<!-- Lexical Scoping:  A closure gives you access to an outer function's scope from an inner function.  -->
+<script>
+    function init() {
+        let name = "Mozilla"; 
+        function displayName() {
+            console.log(name); 
+        }
+        displayName();
+    }
+    init();
+
+    function outer(){
+        let username = "Sidhant"
+        // console.log("Secret: ", secret); not avaiable
+        function innerOne(){
+            let secret = "123abc"
+            console.log("InnerOne: ", username);
+        }
+
+        function innerTwo(){
+            console.log("InnerTwo: ",username);
+            // console.log("Secret: ",secret);  not available
+        }
+
+        innerOne()
+        innerTwo()
+    }
+    outer()
+    // console.log("Username: ", username); not avaiable
+
+    //In this outer() is parent and innerOne() and innerTwo() are two children. Due to lexical scoping, children can inherit the property of parent. but parent cannot inherit the children property, also two sibilings cannot share each others property.
+
+    // Closure: when returning the inner function, not only inner function returns , also its lexical scope returns.
+    function init() {
+        let name = "Mozilla"; 
+        function displayName() {
+            console.log(name); 
+        }
+        return displayName();
+    }
+    init();
+</script>
+
+<script>
+    //Without closure:
+    document.querySelector('#orange').addEventListener('click', function(){
+        document.body.style.backgroundColor = 'orange'
+    })
+    document.querySelector('#green').addEventListener('click', function(){
+        document.body.style.backgroundColor = 'green'
+    })
+    //This works, but what if you have to do this for 500 buttons. In such case, closure comes to play
+
+    //With Closure:
+    function clickHandler(color){
+
+        return function(){
+            document.body.style.backgroundColor = `${color}`;
+        }
+    }
+
+    document.getElementById('orange').onclick = clickHandler('orange');
+    document.getElementById('green').onclick = clickHandler('green');
+
+</script>
+</html>

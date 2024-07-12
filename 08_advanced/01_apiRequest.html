@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <!-- Just to read -->
+    0	UNSENT	Client has been created. open() not called yet.
+    1	OPENED	open() has been called.
+    2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+    3	LOADING	Downloading; responseText holds partial data.
+    4	DONE	The operation is complete.
+</body>
+<script>
+    // XMLHttpRequest: readyState property   (Just for knowledge)
+    const requestURL = 'https://api.github.com/users/Sidnaik04'
+    const xhr = new XMLHttpRequest(); //xmlhttprequest object created
+    xhr.open('GET', requestURL); //open the request ('GET -> method', 'URL')
+
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState);
+        if(xhr.readyState===4){
+            const data = JSON.parse(this.responseText) //-> by default it is string to read convert to JSON
+            console.log(typeof data);
+            console.log(data);
+            //to get number of followers from data
+            console.log(data.followers);
+            //to get image
+            console.log(data.avatar_url);
+        }
+    }
+
+    xhr.send();
+
+</script>
+</html>
+
+<!-- Task:
+    Create a card by using the data from URL: api.github.com/users/hiteshChoudhary
+    take image and followers as data
+    whenever data is recieved user can click on a button and can recieve data. Using that make a card
+-->

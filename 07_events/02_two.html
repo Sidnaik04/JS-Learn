@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SetTimeout</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <h1>Javascript</h1>
+
+    <button id="stop">Stop</button>
+</body>
+
+<Script>
+    //settimeout --> after 2 sec of refreshing the page it will print "hello"
+    setTimeout(function(){
+        console.log("Hello")
+    }, 2000)
+
+    const changeText = function(){
+        document.querySelector('h1').innerHTML = "JS on Chai aur Code"
+    }
+
+    const stop = setTimeout(changeText,2000)
+
+    //cleartimeout --> to stop the settimeout
+
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearTimeout(stop)
+        console.log("STOPPED");
+    })
+
+</Script>
+</html>

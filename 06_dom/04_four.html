@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+
+<script>
+    //To add
+    //Basic way: Not optimized
+    function addLanguage(langName){
+        const li = document.createElement('li')
+        li.innerHTML = `${langName}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage("Python")
+    addLanguage("PHP")
+    
+    // Optimized way
+    function addOptiLanguage(langName){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptiLanguage("C++")
+    addOptiLanguage("Mojo")
+
+    //To edit: 3 methods choose whichever you want (2 is optimized)
+    // 1)
+    const fourthLang = document.querySelector('li:nth-child(4)')
+    fourthLang.innerHTML = "Typescript"
+
+    //2)
+    const secondLang = document.querySelector('li:nth-child(2)')
+    const newLi = document.createElement('li')
+    newLi.textContent = "Ruby"
+    secondLang.replaceWith(newLi)
+
+    //3)
+    const thirdLang = document.querySelector('li:nth-child(3)')
+    thirdLang.outerHTML="<li> Java </li>"
+
+    //To remove:
+    const lastLang = document.querySelector("li:last-child")
+    lastLang.remove()
+
+</script>
+</html>

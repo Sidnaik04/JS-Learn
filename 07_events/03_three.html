@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SetTimeout</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <h1>Javascript</h1>
+
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+
+<Script>
+
+    //Task:
+    // Start button to invoke setInterval and Stop button to invoke clearInterval
+
+    //reference from Project 6
+    let intervalId;
+    const sayHello = function(){
+
+        if(!intervalId){
+            intervalId = setInterval(start, 1000, "Hello");
+        }
+
+        function start(str){
+            console.log(str);
+        }
+    }
+
+    const stopHello = function(){
+        clearInterval(intervalId);
+        intervalId = null;
+    }
+
+
+    document.querySelector('#start').addEventListener('click', sayHello)
+    document.querySelector('#stop').addEventListener('click', stopHello)
+
+</Script>
+</html>

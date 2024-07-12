@@ -1,0 +1,27 @@
+01_one.html
+
+In javascript don't include any events within html tags as it reduces scalability. e.g: <h1 onclick="alert("hello")>Hello</h1>
+
+This is also not good practice
+document.getElementById('owl').onclick=function(){
+        alert("Owl")
+}
+
+This is best
+document.getElementById('owl').addEventListener('click',function(){
+        alert('Owl clicked')
+})
+
+Things to study
+types of events, timestamp, preventDefault
+target, toElement, srcElement, currentTarget,
+clientX, clientY, screenX, screenY
+altkey, ctrlkey, shiftkey, keyCode
+
+//Event stopPropagation: depends on use cases
+Bubble events: In this "clicked inside ul" will be at bottom and "clicked on owl" will be at top. Bottom to Top 
+capturing events: In this "clicked inside ul" will be at top and "clicked on owl" will be at bottom. Top to Bottom 
+stopPropagation: Eliminate both bubble and capturing events. 
+
+
+setTimeout, clearTimeout
